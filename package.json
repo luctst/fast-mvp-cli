@@ -1,0 +1,52 @@
+{
+	"name": "fast-mvp-cli",
+	"version": "1.0.0",
+	"description": " Create repo with the help of fast-mvp repo template ",
+	"main": "index.js",
+	"bin": "index.js",
+	"author": "luctst",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://www.github.com/luctst/fast-mvp-cli"
+	},
+	"bugs": {
+		"url": "https://www.github.com/luctst/fast-mvp-cli/issues"
+	},
+	"homepage": "https://www.github.com/luctst/fast-mvp-cli",
+	"engines": {
+		"node": ">= 10.0.0"
+	},
+	"eslintIgnore": [
+		"lib/build/"
+	],
+	"ava": {
+		"cache": true
+	},
+	"keywords": [],
+	"scripts": {
+		"test": "ava --verbose ./test/*.js",
+		"test:watch": "ava --watch --verbose --fail-fast ./test/*.js",
+		"lint": "npx eslint --cache 'index.js'",
+		"lint:watch": "esw -w --clear --color --cache 'index.js'",
+		"lint:fix": "npx eslint --fix 'index.js'",
+		"style": "prettier -c 'index.js'",
+		"style:fix": "prettier --c --write 'index.js'"
+	},
+	"devDependencies": {
+		"ava": "^3.15.0",
+		"eslint": "^8.4.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-import": "^2.25.3",
+		"eslint-plugin-prettier": "^4.0.0",
+		"eslint-watch": "^8.0.0",
+		"prettier": "^2.5.1"
+	},
+	"dependencies": {
+		"chalk": "^4.1.2",
+		"get-installed-path": "^4.0.8",
+		"inquirer": "^8.2.0",
+		"ora": "^5.4.1"
+	}
+}
