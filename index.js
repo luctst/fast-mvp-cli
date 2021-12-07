@@ -14,6 +14,22 @@ const { promises } = require("fs");
   const oraInstace = ora({
     stream: process.stdout,
   });
+  const preset = JSON.stringify({
+    useConfigFiles: true,
+    cssPreprocessor: 'scss',
+    plugins: {
+      '@vue/cli-plugin-babel': {},
+      '@vue/cli-plugin-eslint': {
+        config: "airbnb",
+        lintOn: [
+          "save",
+          "commit"
+        ]
+      },
+      "@vue/cli-plugin-router": {},
+      "@vue/cli-plugin-vuex": {}
+    }
+  });
 
   async function checkConfig() {
     await getInstalledPath("@vue");
@@ -82,15 +98,21 @@ const { promises } = require("fs");
         .on("error", (error) => reject(error))
         .on("close", (code) => {
           if (code === 0) {
-            const subProcess = spawn(`vue create project`, ["-d"], {
-              cwd: `${process.cwd()}/${aswr.githubRepoName}/client`,
+            const subProcess = spawn(`vue create client -i '${preset}' --merge`, [], {
+              cwd: `${process.cwd()}/${aswr.githubRepoName}`,
               shell: true,
             });
 
             subProcess.stdout.setEncoding("utf-8");
-            subProcess.stdout.on("data", (data) => console.log(data));
+            subProcess.stdout.on("data", (data) => {
+              if (oraInstace.isSpinning) {
+                oraInstace.stopAndPersist();
+              }
 
-            subProcess
+              console.log(data);
+            });
+
+            return subProcess
               .on("error", async (error) => {
                 await promises.rm(`${process.cwd()}/${aswr.githubRepoName}`, {
                   recursive: true,
@@ -100,7 +122,7 @@ const { promises } = require("fs");
               })
               .on("close", async (code) => {
                 if (code === 0)
-                  resolve(
+                  return resolve(
                     oraInstace.succeed("Done you can now run docker-compose up -d")
                   );
 
