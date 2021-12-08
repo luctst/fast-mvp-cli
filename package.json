@@ -1,7 +1,7 @@
 {
 	"name": "fast-mvp-cli",
-	"version": "1.0.0",
-	"description": " Create repo with the help of fast-mvp repo template ",
+	"version": "0.0.0",
+	"description": "Create repo with the help of fast-mvp repo template ",
 	"main": "index.js",
 	"bin": "index.js",
 	"author": "luctst",
@@ -23,7 +23,14 @@
 	"ava": {
 		"cache": true
 	},
-	"keywords": [],
+	"keywords": [
+		"cli",
+		"vue-cli",
+		"node",
+		"nodejs",
+		"fast-cli",
+		"javascript"
+	],
 	"scripts": {
 		"test": "ava --verbose ./test/*.js",
 		"test:watch": "ava --watch --verbose --fail-fast ./test/*.js",
