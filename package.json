@@ -4,6 +4,9 @@
 	"description": "Create repo with the help of fast-mvp repo template ",
 	"main": "index.js",
 	"bin": "index.js",
+	"files": [
+		"index.js"
+	],
 	"author": "luctst",
 	"license": "MIT",
 	"repository": {
