@@ -1,6 +1,6 @@
 {
 	"name": "fast-mvp-cli",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Create repo with the help of fast-mvp repo template ",
 	"main": "index.js",
 	"bin": "index.js",
