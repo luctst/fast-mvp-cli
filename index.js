@@ -6,7 +6,7 @@ const { getInstalledPath } = require("get-installed-path");
 const { prompt, Separator } = require("inquirer");
 const { type } = require("os");
 const { spawn } = require("child_process");
-const { promises } = require("fs");
+const { promises, createWriteStream } = require("fs");
 
 (async function main() {
   let aswr;
@@ -121,10 +121,14 @@ const { promises } = require("fs");
                 reject(error);
               })
               .on("close", async (code) => {
-                if (code === 0)
+                if (code === 0) {
+                  createWriteStream(`${process.cwd()}/${aswr.githubRepoName}/client/.env`);
+                  createWriteStream(`${process.cwd()}/${aswr.githubRepoName}/api/.env`);
+
                   return resolve(
                     oraInstace.succeed("Done you can now run docker-compose up -d")
                   );
+                }
 
                 await promises.rm(`${process.cwd()}/${aswr.githubRepoName}`, {
                   recursive: true,
