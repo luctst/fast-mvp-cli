@@ -57,6 +57,11 @@ npx fast-mvp-cli
 
 
 ## Usage 💡
+Run in your terminal app.
+```
+fast-mvp-cli
+```
+
 Once installed you can run in your new folder created `docker-compose up -d` that will create and start your containers.
 
 > **Note** If you want use the `bdd.sh` script, you must create at the root `.env` file with `$DB_URL` variable who contains the endpoint of your mongodb atlas database, then replace all `<database>` by your database name.
